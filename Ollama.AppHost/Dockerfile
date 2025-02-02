@@ -9,8 +9,6 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY [".", "."]
 RUN dotnet build "Ollama.AppHost.csproj" -c Release -o /app/build
-RUN dotnet build "Ollama.AppHost.csproj" -c Release -o /app/build
-
 
 FROM build AS publish
 RUN dotnet publish "Ollama.AppHost.csproj" -c Release -o /app/publish

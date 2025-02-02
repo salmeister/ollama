@@ -1,7 +1,3 @@
-
-using Aspire.Hosting;
-using OllamaSharp;
-
 var builder = DistributedApplication.CreateBuilder(args);
 
 var container = builder.AddDockerfile("mycontainer", "./");
