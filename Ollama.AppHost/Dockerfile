@@ -10,5 +10,5 @@ RUN dotnet build "Ollama.AppHost/Ollama.AppHost.csproj" -c Release
 # Create Image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/Ollama.AppHost/bin/Release/net9.0 ./app/Ollama.AppHost
-ENTRYPOINT ["dotnet", "./app/Ollama.AppHost/Ollama.AppHost.dll"]
+COPY --from=build /app/Ollama.AppHost/bin/Release/net9.0 .
+ENTRYPOINT ["dotnet", "./Ollama.AppHost.dll"]
