@@ -13,5 +13,7 @@ WORKDIR /app
 COPY --from=build /src/Ollama.AppHost/bin/Release/net9.0 .
 COPY --from=build /src /src
 ENV ASPNETCORE_URLS=http://+:80
+ENV DOTNET_DASHBOARD_OTLP_ENDPOINT_URL=http://localhost:4317
+ENV DOTNET_DASHBOARD_OTLP_HTTP_ENDPOINT_URL=http://localhost:4318
 WORKDIR /src
 ENTRYPOINT ["dotnet", "/app/Ollama.AppHost.dll"]
