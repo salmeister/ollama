@@ -5,7 +5,7 @@ COPY ["Ollama.AppHost/*.csproj", "Ollama.AppHost/"]
 RUN dotnet restore "Ollama.AppHost/Ollama.AppHost.csproj" 
 COPY . .
 RUN dotnet build "Ollama.AppHost/Ollama.AppHost.csproj" -c Release
-RUN dotnet publish "Ollama.AppHost/Ollama.AppHost.csproj" -c Release --no-restore --no-build -o /src/publish
+RUN dotnet publish "Ollama.AppHost/Ollama.AppHost.csproj" -c Release --os linux --arch x64 -p:PublishProfile=DefaultContainer -o /src/publish
 
 # Create Image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
