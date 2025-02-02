@@ -4,7 +4,7 @@ WORKDIR /app
 COPY **/*.csproj ./
 RUN dotnet restore
 COPY . ./
-RUN dotnet publish -c Release -o out
+RUN dotnet publish **/*.csproj -c Release -o out
 
 # Create Image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
