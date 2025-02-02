@@ -4,10 +4,11 @@ WORKDIR /src
 COPY ["Ollama.AppHost/*.csproj", "Ollama.AppHost/"]
 RUN dotnet restore "Ollama.AppHost/Ollama.AppHost.csproj" 
 COPY . .
-RUN dotnet publish "Ollama.AppHost/Ollama.AppHost.csproj" -c Release -o /app/publish
+RUN dotnet build "Ollama.AppHost/Ollama.AppHost.csproj" -c Release
+RUN dotnet publish "Ollama.AppHost/Ollama.AppHost.csproj" -c Release --no-restore --no-build -o /src/publish
 
 # Create Image
 FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
-COPY --from=build /app/publish .
+COPY --from=build /src/publish .
 ENTRYPOINT ["dotnet", "Ollama.AppHost.dll"]
