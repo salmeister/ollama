@@ -4,7 +4,7 @@ WORKDIR /src
 COPY **/*.csproj ./
 RUN dotnet restore
 COPY . ./
-RUN dotnet build -c Release
+RUN dotnet build "Ollama.AppHost.csproj" -c Release
 #RUN dotnet publish "Ollama.AppHost/Ollama.AppHost.csproj" -c Release --os linux --arch x64 -p:PublishProfile=DefaultContainer -o /src/publish
 
 # Create Image
