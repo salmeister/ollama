@@ -19,7 +19,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: ghcr.io
   # github.repository as <account>/<repo>
-  IMAGE_NAME: Ollama
+  IMAGE_NAME: ollama-app-host
   PROJECT_NAME: Ollama.AppHost
 
 jobs:
@@ -78,7 +78,7 @@ jobs:
           context: .
           file: ./${{ env.PROJECT_NAME }}/Dockerfile
           push: ${{ github.event_name != 'pull_request' }}
-          tags: ${{ env.REGISTRY }}/${{ github.actor }}/${{ github.repository }}/${{ env.IMAGE_NAME }}:latest
+          tags: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
 
       # Sign the resulting Docker image digest except on PRs.
       # This will only write to the public Rekor transparency log when the Docker
