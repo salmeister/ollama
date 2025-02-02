@@ -12,4 +12,6 @@ FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
 WORKDIR /app
 COPY --from=build /src/Ollama.AppHost/bin/Release/net9.0 .
 COPY --from=build /src /src
+ENV ASPNETCORE_URLS=http://+:80
+WORKDIR /src
 ENTRYPOINT ["dotnet", "/app/Ollama.AppHost.dll"]
