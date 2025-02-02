@@ -2,7 +2,7 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /src
 COPY ["Ollama.AppHost/*.csproj", "Ollama.AppHost/"]
-RUN dotnet restore
+RUN dotnet restore "Ollama.AppHost/Ollama.AppHost.csproj" 
 COPY . .
 RUN dotnet publish "Ollama.AppHost/Ollama.AppHost.csproj" -c Release -o /app/publish
 
